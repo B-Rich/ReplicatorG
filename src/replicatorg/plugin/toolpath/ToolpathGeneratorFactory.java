@@ -56,12 +56,22 @@ public class ToolpathGeneratorFactory {
 		    	return Base.getUserFile("sf_31_profiles");
 			}
 		};
+		class SuperSkein extends SuperSkeinGenerator {
+			public File getDefaultSuperSkeinDir() {
+		    	return Base.getApplicationFile("skein_engines/superskein");
+			}
+			File getUserProfilesDir() {
+		    	return Base.getUserFile("superskein_profiles");
+			}
+		};
 
 		list.add(new ToolpathGeneratorDescriptor("Skeinforge (standard)", 
 				"This is the standard version of skeinforge that has shipped with "+
 				"ReplicatorG since 0016.", Skeinforge6.class));
 		list.add(new ToolpathGeneratorDescriptor("Skeinforge (31)", 
 				"This is the latest version of skeinforge.", Skeinforge31.class));
+		list.add(new ToolpathGeneratorDescriptor("SuperSkein (experimental)", 
+				"This is the experimental version of superskein.", SuperSkein.class));
 		
 		return list;
 	}
